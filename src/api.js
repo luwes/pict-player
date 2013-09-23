@@ -62,6 +62,7 @@
 				C.$(document)[action]('webkitfullscreenchange mozfullscreenchange fullscreenchange', fn);
 			}
 			events = events.replace(/volume\b/, 'volumechange');
+			events = events.replace(/(time\b|position)/, 'timeupdate');
 			this.$video[action](events, fn);
 		},
 		on: function(events, fn) {
