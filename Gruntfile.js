@@ -25,6 +25,22 @@ module.exports = function(grunt) {
 					'pict.css': 'scss/pict.scss'
 				}
 			}
+		},
+		watch: {
+			css: {
+				files: 'scss/*.scss',
+				tasks: ['sass'],
+				options: {
+					livereload: true
+				}
+			},
+			js: {
+				files: 'src/*.js',
+				tasks: ['uglify'],
+				options: {
+					livereload: true
+				}
+			}
 		}
 	});
 
