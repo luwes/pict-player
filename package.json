@@ -1,0 +1,20 @@
+{
+  "name": "pict-player",
+  "version": "0.0.0",
+  "description": "Pict player is a super lightweight HTML5 player",
+  "main": "Gruntfile.js",
+  "repository": "",
+  "keywords": [
+    "html5",
+    "video",
+    "api"
+  ],
+  "author": "Wesley Luyten",
+  "license": "BSD",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.4",
+    "grunt-contrib-sass": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.3"
+  }
+}
