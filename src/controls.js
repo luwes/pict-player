@@ -8,6 +8,7 @@
 		C.$(this.el).on('click', C.$.proxy(this.click, this));
 
 		api.on('play pause volume fullscreen', C.$.proxy(this.render, this));
+		api.on('loadedmetadata timeupdate', C.$.proxy(this.position, this));
 	};
 
 	C.Controls.prototype = {
@@ -32,6 +33,11 @@
 			C.$('.pict-play').attr('data-state', !this.api.video.paused);
 			C.$('.pict-mute').attr('data-state', this.api.video.muted);
 			C.$('.pict-fullscreen').attr('data-state', this.api.isFullscreen());
+		},
+
+		position: function() {
+			var value = this.api.video.currentTime || this.api.video.duration;
+			C.$('.pict-time').html(C.$.formatTime(value));
 		}
 	};
 

@@ -127,6 +127,12 @@
 				this.each(removeEvent);
 			}
 			return this;
+		},
+
+		html: function(content) {
+			return this.each(function(el) {
+				el.innerHTML = content;
+			});
 		}
 	};
 
@@ -182,6 +188,15 @@
 			var temp = document.createElement('div');
 			temp.innerHTML = content;
 			return temp.childNodes;
+		},
+
+		formatTime: function(secs) {
+			var h = parseInt(secs / 3600, 10);
+			var m = parseInt((secs % 3600) / 60, 10);
+			var s = parseInt((secs % 3600) % 60, 10);
+			return (h === 0 ? "" : (h < 10 ? "0"+h+":" : h+":")) +
+					(m < 10 ? "0"+m : ""+m) + ":" +
+					(s < 10 ? "0"+s : ""+s);
 		}
 	});
 

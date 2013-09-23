@@ -24,7 +24,7 @@
 							'<a href="#" class="pict-play"></a>' +
 						'</div>' +
 						'<div class="pict-right">' +
-							'<span class="pict-duration">13:20</span>' +
+							'<span class="pict-time">00:00</span>' +
 							'<a href="#" class="pict-mute"></a>' +
 							'<a href="#" class="pict-fullscreen"></a>' +
 						'</div>' +
