@@ -1,29 +1,13 @@
-/**
- * Sub JavaScript library v0.2
- * Very limited substitute for jQuery to include
- * in small projects so you have no dependencies
- * Browser support IE8+
- *
- * Includes code snippets from
- * http://jquery.com/
- * http://underscorejs.org/
- *
- * Copyright (c) 2013 anyone
- * Released under the MIT license
- * http://opensource.org/licenses/MIT
- */
-(function(window) {
+(function(C) {
 
 	var push = [].push,
 		slice = [].slice;
 
-	window.Sub = function(selector, context) {
-		return new Sub.fn.init(selector, context);
+	var Util = C.$ = function(selector, context) {
+		return new Util.fn.init(selector, context);
 	};
 	
-	if (!window.$) window.$ = window.Sub;
-
-	Sub.fn = Sub.prototype = {
+	Util.fn = Util.prototype = {
 
 		length: 0,
 		calls: [],
@@ -38,15 +22,7 @@
 		},
 
 		each: function(fn) {
-			return Sub.each(this, fn, this);
-		},
-
-		data: function(key, value) {
-			var data = this.attr('data-'+key, value);
-			return data === 'true' ? true :
-				data === 'false' ? false :
-				data === 'null' ? null :
-				+data+"" === data ? +data : data;
+			return Util.each(this, fn, this);
 		},
 
 		attr: function(name, value) {
@@ -101,7 +77,7 @@
 
 		on: function(events, fn) {
 			events = events.split(' ');
-			fn.guid = fn.guid || Sub.guid++;
+			fn.guid = fn.guid || Util.guid++;
 			for (var i = 0; i < events.length; i++) {
 				var event = events[i];
 				var addEvent = function(el) {
@@ -122,13 +98,13 @@
 						guid: fn.guid
 					};
 				};
-				push.apply(Sub.fn.calls, Sub.map(this, addEvent, this));
+				push.apply(Util.fn.calls, Util.map(this, addEvent, this));
 			}
 			return this;
 		},
 
 		off: function(events, fn) {
-			var calls = Sub.fn.calls;
+			var calls = Util.fn.calls;
 			events = events.split(' ');
 			for (var i = 0; i < events.length; i++) {
 				var event = events[i];
@@ -154,9 +130,9 @@
 		}
 	};
 
-	Sub.fn.init.prototype = Sub.fn;
+	Util.fn.init.prototype = Util.fn;
 
-	Sub.extend = function(target) {
+	Util.extend = function(target) {
 		var args = slice.call(arguments, 1);
 		for (var i = 0; i < args.length; i++) {
 			for (var key in args[i]) target[key] = args[i][key];
@@ -164,7 +140,7 @@
 		return target;
 	};
 
-	Sub.extend(Sub, {
+	Util.extend(Util, {
 
 		guid: 1,
 
@@ -187,7 +163,7 @@
 			var results = [];
 			if (obj == null) return results;
 			if (obj.map) return obj.map(iterator, context);
-			Sub.each(obj, function(value, index, list) {
+			Util.each(obj, function(value, index, list) {
 				results.push(iterator.call(context, value, index, list));
 			});
 			return results;
@@ -198,7 +174,7 @@
 			var proxy = function() {
 				return fn.apply(context || this, args.concat(slice.call(arguments)));
 			};
-			proxy.guid = fn.guid = fn.guid || Sub.guid++;
+			proxy.guid = fn.guid = fn.guid || Util.guid++;
 			return proxy;
 		},
 
@@ -209,4 +185,4 @@
 		}
 	});
 
-})(window);
+})(pict);

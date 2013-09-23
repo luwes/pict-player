@@ -1,12 +1,19 @@
-(function(C, document) {
+(function(window, document) {
 
-	C.Api = function(id) {
-		this.id = id;
-		this.$video = $('#'+id);
-		this.video = this.$video[0];
+	var players = {};
+
+	var C = window.pict = function(id) {
+		if (players[id]) return players[id];
+		return players[id] = new C.fn.init(id);
 	};
 
-	C.Api.prototype = {
+	C.fn = C.prototype = {
+
+		init: function(id) {
+			this.id = id;
+			this.$video = C.$('#'+id);
+			this.video = this.$video[0];
+		},
 
 		setup: function(options) {
 
@@ -27,7 +34,7 @@
 					'</div>'
 			};
 
-			this.config = $.extend(defaults, options);
+			this.config = C.$.extend(defaults, options);
 
 			//this.video.controls = false;
 
@@ -40,7 +47,7 @@
 			this.inner.appendChild(this.video);
 			this.el.appendChild(this.inner);
 
-			$(this.el).css({
+			C.$(this.el).css({
 				width: this.$video.attr('width'),
 				height: this.$video.attr('height')
 			});
@@ -52,7 +59,7 @@
 
 		handle: function(action, events, fn) {
 			if (events.match(/\bfullscreen/)) {
-				$(document)[action]('webkitfullscreenchange mozfullscreenchange fullscreenchange', fn);
+				C.$(document)[action]('webkitfullscreenchange mozfullscreenchange fullscreenchange', fn);
 			}
 			events = events.replace(/volume\b/, 'volumechange');
 			this.$video[action](events, fn);
@@ -103,4 +110,6 @@
 		}
 	};
 
-})(pict, document);
+	C.fn.init.prototype = C.fn; 
+
+})(window, document);

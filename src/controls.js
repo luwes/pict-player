@@ -4,10 +4,10 @@
 		this.api = api;
 		this.config = config;
 
-		this.el = $.parseHTML(config.template)[0];
-		$(this.el).on('click', $.proxy(this.click, this));
+		this.el = C.$.parseHTML(config.template)[0];
+		C.$(this.el).on('click', C.$.proxy(this.click, this));
 
-		api.on('play pause volume fullscreen', $.proxy(this.render, this));
+		api.on('play pause volume fullscreen', C.$.proxy(this.render, this));
 	};
 
 	C.Controls.prototype = {
@@ -23,15 +23,15 @@
 			var matches = e.target.className.match(/pict-([^\s]*)/);
 			if (matches) {
 				if ('play,mute,fullscreen'.match(matches[1])) {
-					this.api[matches[1]]($(e.target).data('state'));
+					this.api[matches[1]](C.$(e.target).attr('data-state') === "true");
 				}
 			}
 		},
 
 		render: function() {
-			$('.pict-play').data('state', !this.api.video.paused);
-			$('.pict-mute').data('state', this.api.video.muted);
-			$('.pict-fullscreen').data('state', this.api.isFullscreen());
+			C.$('.pict-play').attr('data-state', !this.api.video.paused);
+			C.$('.pict-mute').attr('data-state', this.api.video.muted);
+			C.$('.pict-fullscreen').attr('data-state', this.api.isFullscreen());
 		}
 	};
 

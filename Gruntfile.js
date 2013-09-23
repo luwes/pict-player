@@ -10,11 +10,10 @@ module.exports = function(grunt) {
 			all: {
 				files: {
 					'pict.min.js': [
-						'src/Sub.js',
-						'src/main.js',
 						'src/api.js',
 						'src/controls.js',
-						'src/progress.js'
+						'src/progress.js',
+						'src/util.js'
 					]
 				}
 			}
