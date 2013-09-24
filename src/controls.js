@@ -60,7 +60,7 @@
 		progress: function() {
 			var v = this.api.video;
 			if (v.buffered.length > 0) {
-				this.progressBar.val(v.buffered.end(0) / v.duration * 100);
+				this.progressBar.val(v.buffered.end(v.buffered.length-1) / v.duration * 100);
 			}
 		}
 	};
