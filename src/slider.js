@@ -8,27 +8,26 @@
 		var down = false;
 
 		this.el = document.querySelector(options.el);
-		this.el.style.width = '100%';
-		var width = this.el.clientWidth;
-		this.el.style.width = 0;
 
-		var mouseBar = document.createElement('div');
-		mouseBar.style.width = width + 'px';
-		this.el.appendChild(mouseBar);
+		this.div = document.createElement('div');
+		this.el.appendChild(this.div);
+
+		var p = document.createElement('p');
+		this.el.appendChild(p);
 
 		var onMouse = function(e) {
 			down = e.type === 'mousedown';
 			onMove(e);
 		};
-		mouseBar.onmousedown = onMouse;
+		p.onmousedown = onMouse;
 		document.onmouseup = onMouse;
 
 		var onMove = function(e) {
 			if (down) {
 				if (e.preventDefault) e.preventDefault();
-				var x = e.pageX - getOffset(mouseBar).left;
+				var x = e.pageX - getOffset(p).left;
 				if (typeof options.change === 'function') {
-					options.change.call(this, x / width * 100);
+					options.change.call(this, x / p.clientWidth * 100);
 				}
 				return false;
 			}
@@ -55,8 +54,8 @@
 	C.Slider.prototype = {
 
 		val: function(percent) {
-			this.el.style.width = percent + '%';
-			this.a.style.left = (this.el.clientWidth - this.a.clientWidth * percent / 100) + 'px';
+			this.div.style.width = percent + '%';
+			this.a.style.left = (this.div.clientWidth - this.a.clientWidth * percent / 100) + 'px';
 		}
 	};
 

@@ -99,23 +99,34 @@
 		height: $height;
 		margin-top: -$height/2;
 
-		div {
+		div, p, a {
 			position: absolute;
+			height: inherit;
+		}
+
+		> div {
 			width: 100%;
 			height: inherit;
 			&.pict-progress {
-				background-color: rgba(255,255,255,0.1);
-				width: 0;
+				> div {
+					background-color: rgba(255,255,255,0.1);
+					width: 0;
+				}
 			}
 			&.pict-position {
-				background-color: #fff;
-				width: 0;
+				> div {
+					background-color: #fff;
+					width: 0;
+				}
+				> p {
+					width: 100%;
+					margin: 0;
+				}
 				> a {
 					$handle-height: 8px;
 
 					background-color: #090;
 					padding: 0;
-					position: absolute;
 					top: 50%;
 					left: 0;
 					width: $handle-height;

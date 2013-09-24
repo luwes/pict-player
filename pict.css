@@ -110,24 +110,28 @@ you can use the generic selector below, but it's slower:
     right: 0;
     height: 8px;
     margin-top: -4px; }
-    .pict-controls .pict-bar div {
+    .pict-controls .pict-bar div, .pict-controls .pict-bar p, .pict-controls .pict-bar a {
       position: absolute;
+      height: inherit; }
+    .pict-controls .pict-bar > div {
       width: 100%;
       height: inherit; }
-      .pict-controls .pict-bar div.pict-progress {
+      .pict-controls .pict-bar > div.pict-progress > div {
         background-color: rgba(255, 255, 255, 0.1);
         width: 0; }
-      .pict-controls .pict-bar div.pict-position {
+      .pict-controls .pict-bar > div.pict-position > div {
         background-color: #fff;
         width: 0; }
-        .pict-controls .pict-bar div.pict-position > a {
-          background-color: #090;
-          padding: 0;
-          position: absolute;
-          top: 50%;
-          left: 0;
-          width: 8px;
-          height: 8px;
-          margin-top: -4px; }
-          .pict-controls .pict-bar div.pict-position > a:hover, .pict-controls .pict-bar div.pict-position > a:active {
-            -webkit-transform: scale(1.4); }
+      .pict-controls .pict-bar > div.pict-position > p {
+        width: 100%;
+        margin: 0; }
+      .pict-controls .pict-bar > div.pict-position > a {
+        background-color: #090;
+        padding: 0;
+        top: 50%;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        margin-top: -4px; }
+        .pict-controls .pict-bar > div.pict-position > a:hover, .pict-controls .pict-bar > div.pict-position > a:active {
+          -webkit-transform: scale(1.4); }
