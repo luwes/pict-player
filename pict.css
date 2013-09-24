@@ -69,16 +69,17 @@ you can use the generic selector below, but it's slower:
   left: 0;
   right: 0;
   height: 30px; }
-  .pict-controls div {
+  .pict-controls > div {
     color: #fff;
     height: 100%; }
-    .pict-controls div.pict-left {
+    .pict-controls > div.pict-left {
       float: left;
       margin-left: 4px; }
-    .pict-controls div.pict-center {
+    .pict-controls > div.pict-center {
+      position: relative;
       margin-left: 32px;
       margin-right: 102px; }
-    .pict-controls div.pict-right {
+    .pict-controls > div.pict-right {
       float: right;
       margin-right: 4px; }
   .pict-controls a, .pict-controls span {
@@ -101,3 +102,32 @@ you can use the generic selector below, but it's slower:
     font-size: 12px;
     font-weight: bold;
     -webkit-font-smoothing: antialiased; }
+  .pict-controls .pict-bar {
+    background-color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 8px;
+    margin-top: -4px; }
+    .pict-controls .pict-bar div {
+      position: absolute;
+      width: 100%;
+      height: inherit; }
+      .pict-controls .pict-bar div.pict-progress {
+        background-color: rgba(255, 255, 255, 0.1);
+        width: 0; }
+      .pict-controls .pict-bar div.pict-position {
+        background-color: #fff;
+        width: 0; }
+        .pict-controls .pict-bar div.pict-position > a {
+          background-color: #090;
+          padding: 0;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 8px;
+          height: 8px;
+          margin-top: -4px; }
+          .pict-controls .pict-bar div.pict-position > a:hover, .pict-controls .pict-bar div.pict-position > a:active {
+            -webkit-transform: scale(1.4); }

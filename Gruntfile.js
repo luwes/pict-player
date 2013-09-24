@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 					'pict.min.js': [
 						'src/api.js',
 						'src/controls.js',
-						'src/progress.js',
+						'src/slider.js',
 						'src/util.js'
 					]
 				}

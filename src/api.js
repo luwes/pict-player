@@ -29,7 +29,10 @@
 							'<a href="#" class="pict-fullscreen"></a>' +
 						'</div>' +
 						'<div class="pict-center">' +
-							'<div class="pict-progress"></div>' +
+							'<div class="pict-bar">' +
+								'<div class="pict-progress"></div>' +
+								'<div class="pict-position"></div>' +
+							'</div>' +
 						'</div>' +
 					'</div>'
 			};
@@ -54,7 +57,6 @@
 			this.$video.removeAttr('width height');
 
 			this.controls = new C.Controls(this, this.config);
-			this.inner.appendChild(this.controls.el);
 		},
 
 		handle: function(action, events, fn) {

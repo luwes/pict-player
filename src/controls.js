@@ -5,10 +5,21 @@
 		this.config = config;
 
 		this.el = C.$.parseHTML(config.template)[0];
-		C.$(this.el).on('click', C.$.proxy(this.click, this));
+		api.inner.appendChild(this.el);
 
+		this.progressBar = new C.Slider(api, config, {
+			el: '.pict-progress'
+		});
+		this.positionBar = new C.Slider(api, config, {
+			el: '.pict-position',
+			handle: true,
+			change: C.$.proxy(this.change, this)
+		});
+
+		C.$(this.el).on('click', C.$.proxy(this.click, this));
 		api.on('play pause volume fullscreen', C.$.proxy(this.render, this));
 		api.on('loadedmetadata timeupdate', C.$.proxy(this.position, this));
+		api.on('progress', C.$.proxy(this.progress, this));
 	};
 
 	C.Controls.prototype = {
@@ -29,6 +40,10 @@
 			}
 		},
 
+		change: function(percent) {
+			this.api.video.currentTime = this.api.video.duration * percent / 100;
+		},
+
 		render: function() {
 			C.$('.pict-play').attr('data-state', !this.api.video.paused);
 			C.$('.pict-mute').attr('data-state', this.api.video.muted);
@@ -36,8 +51,17 @@
 		},
 
 		position: function() {
-			var value = this.api.video.currentTime || this.api.video.duration;
+			var v = this.api.video;
+			var value = v.currentTime || v.duration;
 			C.$('.pict-time').html(C.$.formatTime(value));
+			this.positionBar.val(v.currentTime / v.duration * 100);
+		},
+
+		progress: function() {
+			var v = this.api.video;
+			if (v.buffered.length > 0) {
+				this.progressBar.val(v.buffered.end(0) / v.duration * 100);
+			}
 		}
 	};
 

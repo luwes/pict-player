@@ -27,7 +27,7 @@
 	right: 0;
 	height: 30px;
 
-	div {
+	> div {
 		color: #fff;
 		height: 100%;
 		&.pict-left {
@@ -35,6 +35,7 @@
 			margin-left: 4px;
 		}
 		&.pict-center {
+			position: relative;
 			margin-left: 32px;
 			margin-right: 102px;
 		}
@@ -87,4 +88,44 @@
 		-webkit-font-smoothing: antialiased;
 	}
 
+	.pict-bar {
+		$height: 8px;
+
+		background-color: rgba(255,255,255,0.1);
+		position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+		height: $height;
+		margin-top: -$height/2;
+
+		div {
+			position: absolute;
+			width: 100%;
+			height: inherit;
+			&.pict-progress {
+				background-color: rgba(255,255,255,0.1);
+				width: 0;
+			}
+			&.pict-position {
+				background-color: #fff;
+				width: 0;
+				> a {
+					$handle-height: 8px;
+
+					background-color: #090;
+					padding: 0;
+					position: absolute;
+					top: 50%;
+					left: 0;
+					width: $handle-height;
+					height: $handle-height;
+					margin-top: -$handle-height/2;
+					&:hover, &:active {
+						-webkit-transform: scale(1.4);
+					}
+				}
+			}
+		}
+	}
 }

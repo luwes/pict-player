@@ -48,8 +48,7 @@
 				this.each(function(el) {
 					for (var key in styles) {
 						var value = styles[key];
-						if (!isNaN(parseFloat(value)) &&
-							!'zIndex,opacity'.match(key)) {
+						if (!isNaN(value) && !'zIndex,opacity'.match(key)) {
 							value += "px";
 						}
 						el.style[key] = value;
