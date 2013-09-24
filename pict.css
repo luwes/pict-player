@@ -88,6 +88,7 @@ you can use the generic selector below, but it's slower:
       float: right;
       margin-right: 4px; }
   .pict-controls a, .pict-controls span {
+    cursor: default;
     display: inline-block;
     vertical-align: top;
     line-height: 30px;
