@@ -65,10 +65,15 @@ you can use the generic selector below, but it's slower:
 .pict-controls {
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  height: 30px; }
+  height: 30px;
+  -webkit-transition: opacity 0.6s;
+  -moz-transition: opacity 0.6s;
+  -ms-transition: opacity 0.6s;
+  -o-transition: opacity 0.6s;
+  transition: opacity 0.6s; }
   .pict-controls > div {
     color: #fff;
     height: 100%; }

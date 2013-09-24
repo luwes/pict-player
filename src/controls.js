@@ -2,7 +2,7 @@
 
 	C.Controls = function(api, config) {
 		this.api = api;
-		this.config = config;
+		this.id = 0;
 
 		this.el = C.$.parseHTML(config.template)[0];
 		api.inner.appendChild(this.el);
@@ -23,6 +23,18 @@
 	};
 
 	C.Controls.prototype = {
+
+		show: function() {
+			this.el.style.opacity = 1;
+			clearTimeout(this.id);
+			if (!this.api.video.paused) {
+				this.id = setTimeout(C.$.proxy(this.hide, this), 2000);
+			}
+		},
+
+		hide: function() {
+			this.el.style.opacity = 0;
+		},
 
 		click: function(e) {
 			e.preventDefault();
@@ -45,8 +57,12 @@
 		},
 
 		render: function() {
-			C.$('.pict-play').attr('data-state', !this.api.video.paused);
-			C.$('.pict-mute').attr('data-state', this.api.video.muted);
+			var v = this.api.video;
+
+			this.show();
+
+			C.$('.pict-play').attr('data-state', !v.paused);
+			C.$('.pict-mute').attr('data-state', v.muted);
 			C.$('.pict-fullscreen').attr('data-state', this.api.isFullscreen());
 		},
 

@@ -2,7 +2,6 @@
 
 	C.Slider = function(api, config, options) {
 		this.api = api;
-		this.options = this.options;
 
 		var _this = this;
 		var down = false;

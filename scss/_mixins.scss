@@ -1,0 +1,7 @@
+@mixin transition($props) {
+    -webkit-transition: $props;
+    -moz-transition: $props;
+    -ms-transition: $props;
+    -o-transition: $props;
+    transition: $props;
+}

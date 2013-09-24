@@ -58,6 +58,7 @@
 			this.$video.removeAttr('width height');
 
 			this.controls = new C.Controls(this, this.config);
+			C.$(this.inner).on('mousemove', C.$.proxy(this.controls.show, this.controls));
 		},
 
 		handle: function(action, events, fn) {
