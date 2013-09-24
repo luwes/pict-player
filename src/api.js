@@ -22,12 +22,12 @@
 				template:
 					'<div class="pict-controls">' +
 						'<div class="pict-left">' +
-							'<a href="#" class="pict-play"></a>' +
+							'<a class="pict-play"></a>' +
 						'</div>' +
 						'<div class="pict-right">' +
 							'<span class="pict-time">00:00</span>' +
-							'<a href="#" class="pict-mute"></a>' +
-							'<a href="#" class="pict-fullscreen"></a>' +
+							'<a class="pict-mute"></a>' +
+							'<a class="pict-fullscreen"></a>' +
 						'</div>' +
 						'<div class="pict-center">' +
 							'<div class="pict-bar">' +
@@ -58,7 +58,7 @@
 			this.$video.removeAttr('width height');
 
 			this.controls = new C.Controls(this, this.config);
-			C.$(this.inner).on('mousemove', C.$.proxy(this.controls.show, this.controls));
+			C.$(this.el).on('mousemove', C.$.proxy(this.controls.show, this.controls));
 		},
 
 		handle: function(action, events, fn) {

@@ -5,6 +5,7 @@
 		this.id = 0;
 
 		this.el = C.$.parseHTML(config.template)[0];
+		this.$el = C.$(this.el);
 		api.inner.appendChild(this.el);
 
 		this.progressBar = new C.Slider(api, config, {
@@ -16,7 +17,9 @@
 			change: C.$.proxy(this.change, this)
 		});
 
-		C.$(this.el).on('click', C.$.proxy(this.click, this));
+		this.$el.on('click', C.$.proxy(this.click, this));
+		this.$el.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', C.$.proxy(this.display, this));
+
 		api.on('play pause volume fullscreen', C.$.proxy(this.render, this));
 		api.on('loadedmetadata timeupdate', C.$.proxy(this.position, this));
 		api.on('progress', C.$.proxy(this.progress, this));
@@ -25,15 +28,21 @@
 	C.Controls.prototype = {
 
 		show: function() {
-			this.el.style.opacity = 1;
+			this.$el.css({ visibility: 'visible', opacity: 1 });
 			clearTimeout(this.id);
 			if (!this.api.video.paused) {
-				this.id = setTimeout(C.$.proxy(this.hide, this), 2000);
+				this.id = setTimeout(C.$.proxy(this.hide, this), 1000);
 			}
 		},
 
 		hide: function() {
-			this.el.style.opacity = 0;
+			this.$el.css({ opacity: 0 });
+		},
+
+		display: function() {
+			if (this.$el.css('opacity') == 0) {
+				this.$el.css({ visibility: 'hidden' });
+			}
 		},
 
 		click: function(e) {
