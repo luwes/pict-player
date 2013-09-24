@@ -130,8 +130,8 @@ you can use the generic selector below, but it's slower:
         padding: 0;
         top: 50%;
         left: 0;
-        width: 8px;
-        height: 8px;
-        margin-top: -4px; }
+        width: 10px;
+        height: 10px;
+        margin-top: -5px; }
         .pict-controls .pict-bar > div.pict-position > a:hover, .pict-controls .pict-bar > div.pict-position > a:active {
-          -webkit-transform: scale(1.4); }
+          -webkit-transform: scale(1.2); }

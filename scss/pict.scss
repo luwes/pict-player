@@ -123,7 +123,7 @@
 					margin: 0;
 				}
 				> a {
-					$handle-height: 8px;
+					$handle-height: 10px;
 
 					background-color: #090;
 					padding: 0;
@@ -133,7 +133,7 @@
 					height: $handle-height;
 					margin-top: -$handle-height/2;
 					&:hover, &:active {
-						-webkit-transform: scale(1.4);
+						-webkit-transform: scale(1.2);
 					}
 				}
 			}
