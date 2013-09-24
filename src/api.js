@@ -18,6 +18,7 @@
 		setup: function(options) {
 
 			var defaults = {
+				controls: false,
 				template:
 					'<div class="pict-controls">' +
 						'<div class="pict-left">' +
@@ -39,7 +40,7 @@
 
 			this.config = C.$.extend(defaults, options);
 
-			//this.video.controls = false;
+			this.video.controls = this.config.controls;
 
 			this.el = document.createElement('div');
 			this.el.className = "pict-player";
