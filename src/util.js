@@ -56,24 +56,6 @@
 				});
 		},
 
-		addClass: function(classes) {
-			return this.each(function(el) {
-				el.className += ' ' + classes;
-			});
-		},
-
-		removeClass: function(classes) {
-			if (classes) classes = classes.split(' ');
-			return this.each(function(el) {
-				if (!classes) el.className = "";
-				else {
-					for (var i = 0; i < classes.length; i++) {
-						el.className = el.className.replace(classes[i], '');
-					}
-				}
-			});
-		},
-
 		on: function(events, fn) {
 			events = events.split(' ');
 			fn.guid = fn.guid || Util.guid++;
