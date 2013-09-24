@@ -10,13 +10,15 @@
 
 	<video id="player"
 		poster="http://a.jwpcdn.com/thumbs/3y7qRM3H-720.jpg"
-
-		src="http://ia600408.us.archive.org/26/items/BigBuckBunny_328/BigBuckBunny_512kb.mp4"
-
-		width="426" height="240" controls="controls"></video>
+		width="426" height="240" controls="controls">
+		<source src="http://archive.org/download/BigBuckBunny_328/BigBuckBunny_512kb.mp4" type="video/mp4">
+		<source src="http://archive.org/download/BigBuckBunny_328/BigBuckBunny.ogv" type="video/ogg">
+	</video>
 
 	<script>
-		pict('player').setup({});
+		pict('player').setup({
+			//controls: true
+		});
 	</script>
 
 </body>
