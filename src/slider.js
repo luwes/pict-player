@@ -54,7 +54,8 @@
 
 		val: function(percent) {
 			this.div.style.width = percent + '%';
-			this.a.style.left = (this.div.clientWidth - this.a.clientWidth * percent / 100) + 'px';
+			this.a.style.left = percent + '%';
+			this.a.style.marginLeft = (-this.a.clientWidth * percent / 100) + 'px';
 		}
 	};
 
