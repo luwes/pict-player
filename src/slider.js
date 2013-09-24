@@ -7,7 +7,7 @@
 		var _this = this;
 		var down = false;
 
-		this.el = document.querySelector(options.el);
+		this.el = C.$(options.el)[0];
 
 		this.div = document.createElement('div');
 		this.el.appendChild(this.div);
@@ -20,7 +20,7 @@
 			onMove(e);
 		};
 		p.onmousedown = onMouse;
-		document.onmouseup = onMouse;
+		C.$(document).on('mouseup', onMouse);
 
 		var onMove = function(e) {
 			if (down) {
@@ -32,7 +32,7 @@
 				return false;
 			}
 		};
-		document.onmousemove = onMove;
+		C.$(document).on('mousemove', onMove);
 
 		this.a = document.createElement('a');
 		if (options.handle) {
