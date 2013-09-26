@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'icomoon';
-  src: url("fonts/icomoon.eot");
-  src: url("fonts/icomoon.eot?#iefix") format("embedded-opentype"), url("fonts/icomoon.woff") format("woff"), url("fonts/icomoon.ttf") format("truetype"), url("fonts/icomoon.svg#icomoon") format("svg");
+  font-family: 'pict';
+  src: url("fonts/pict.eot");
+  src: url("fonts/pict.eot?#iefix") format("embedded-opentype"), url("fonts/pict.woff") format("woff"), url("fonts/pict.ttf") format("truetype"), url("fonts/pict.svg#pict") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -9,10 +9,10 @@
 /*
 Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
-[class*="icom-"] {
+[class*="iconpict-"] {
 */
-.icom-play, .pict-controls a.pict-play, .icom-pause, .pict-controls a.pict-play[data-state="true"], .icom-volume-high, .pict-controls a.pict-mute, .icom-volume-medium, .icom-volume-low, .icom-volume-mute, .icom-volume-mute-2, .pict-controls a.pict-mute[data-state="true"], .icom-expand, .pict-controls a.pict-fullscreen, .icom-contract, .pict-controls a.pict-fullscreen[data-state="true"] {
-  font-family: 'icomoon';
+.iconpict-play, .pict-controls a.pict-play, .iconpict-pause, .pict-controls a.pict-play[data-state="true"], .iconpict-volume-high, .pict-controls a.pict-mute, .iconpict-volume-medium, .iconpict-volume-low, .iconpict-volume-mute, .iconpict-volume-mute-2, .pict-controls a.pict-mute[data-state="true"], .iconpict-expand, .pict-controls a.pict-fullscreen, .iconpict-contract, .pict-controls a.pict-fullscreen[data-state="true"] {
+  font-family: 'pict';
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -20,31 +20,31 @@ you can use the generic selector below, but it's slower:
   text-transform: none;
   -webkit-font-smoothing: antialiased; }
 
-.icom-play:before, .pict-controls a.pict-play:before {
+.iconpict-play:before, .pict-controls a.pict-play:before {
   content: "\e000"; }
 
-.icom-pause:before, .pict-controls a.pict-play[data-state="true"]:before {
+.iconpict-pause:before, .pict-controls a.pict-play[data-state="true"]:before {
   content: "\e001"; }
 
-.icom-volume-high:before, .pict-controls a.pict-mute:before {
+.iconpict-volume-high:before, .pict-controls a.pict-mute:before {
   content: "\e002"; }
 
-.icom-volume-medium:before {
+.iconpict-volume-medium:before {
   content: "\e003"; }
 
-.icom-volume-low:before {
+.iconpict-volume-low:before {
   content: "\e004"; }
 
-.icom-volume-mute:before {
+.iconpict-volume-mute:before {
   content: "\e005"; }
 
-.icom-volume-mute-2:before, .pict-controls a.pict-mute[data-state="true"]:before {
+.iconpict-volume-mute-2:before, .pict-controls a.pict-mute[data-state="true"]:before {
   content: "\e006"; }
 
-.icom-expand:before, .pict-controls a.pict-fullscreen:before {
+.iconpict-expand:before, .pict-controls a.pict-fullscreen:before {
   content: "\e007"; }
 
-.icom-contract:before, .pict-controls a.pict-fullscreen[data-state="true"]:before {
+.iconpict-contract:before, .pict-controls a.pict-fullscreen[data-state="true"]:before {
   content: "\e008"; }
 
 .pict-player {
@@ -101,8 +101,8 @@ you can use the generic selector below, but it's slower:
       font-size: 18px; }
     .pict-controls a.pict-mute[data-state="true"] {
       margin-right: 1px; }
-    .pict-controls a:active {
-      background-color: transparent; }
+    .pict-controls a:hover {
+      text-decoration: none; }
   .pict-controls span {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: 12px;

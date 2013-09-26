@@ -1,10 +1,10 @@
 @font-face {
-	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot');
-	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-		url('fonts/icomoon.woff') format('woff'),
-		url('fonts/icomoon.ttf') format('truetype'),
-		url('fonts/icomoon.svg#icomoon') format('svg');
+	font-family: 'pict';
+	src:url('fonts/pict.eot');
+	src:url('fonts/pict.eot?#iefix') format('embedded-opentype'),
+		url('fonts/pict.woff') format('woff'),
+		url('fonts/pict.ttf') format('truetype'),
+		url('fonts/pict.svg#pict') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -13,10 +13,10 @@
 /*
 Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
-[class*="icom-"] {
+[class*="iconpict-"] {
 */
-.icom-play, .icom-pause, .icom-volume-high, .icom-volume-medium, .icom-volume-low, .icom-volume-mute, .icom-volume-mute-2, .icom-expand, .icom-contract {
-	font-family: 'icomoon';
+.iconpict-play, .iconpict-pause, .iconpict-volume-high, .iconpict-volume-medium, .iconpict-volume-low, .iconpict-volume-mute, .iconpict-volume-mute-2, .iconpict-expand, .iconpict-contract {
+	font-family: 'pict';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -25,30 +25,30 @@ you can use the generic selector below, but it's slower:
 	//line-height: 1;
 	-webkit-font-smoothing: antialiased;
 }
-.icom-play:before {
+.iconpict-play:before {
 	content: "\e000";
 }
-.icom-pause:before {
+.iconpict-pause:before {
 	content: "\e001";
 }
-.icom-volume-high:before {
+.iconpict-volume-high:before {
 	content: "\e002";
 }
-.icom-volume-medium:before {
+.iconpict-volume-medium:before {
 	content: "\e003";
 }
-.icom-volume-low:before {
+.iconpict-volume-low:before {
 	content: "\e004";
 }
-.icom-volume-mute:before {
+.iconpict-volume-mute:before {
 	content: "\e005";
 }
-.icom-volume-mute-2:before {
+.iconpict-volume-mute-2:before {
 	content: "\e006";
 }
-.icom-expand:before {
+.iconpict-expand:before {
 	content: "\e007";
 }
-.icom-contract:before {
+.iconpict-contract:before {
 	content: "\e008";
 }

@@ -61,28 +61,28 @@
 		text-decoration: none;
 
 		&.pict-play {
-			@extend .icom-play;
+			@extend .iconpict-play;
 			font-size: 18px;
 			&[data-state="true"] {
-				@extend .icom-pause;
+				@extend .iconpict-pause;
 			}
 		}
 		&.pict-mute {
-			@extend .icom-volume-high;
+			@extend .iconpict-volume-high;
 			&[data-state="true"] {
-				@extend .icom-volume-mute-2;
+				@extend .iconpict-volume-mute-2;
 				margin-right: 1px;
 			}
 		}
 		&.pict-fullscreen {
-			@extend .icom-expand;
+			@extend .iconpict-expand;
 			&[data-state="true"] {
-				@extend .icom-contract;
+				@extend .iconpict-contract;
 			}
 		}
 
-		&:active {
-			background-color: transparent;
+		&:hover {
+			text-decoration: none;
 		}
 	}
 	span {
