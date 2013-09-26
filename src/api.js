@@ -59,6 +59,8 @@
 
 			this.controls = new C.Controls(this, this.config);
 			C.$(this.el).on('mousemove', C.$.proxy(this.controls.show, this.controls));
+			
+			return this;
 		},
 
 		handle: function(action, events, fn) {
@@ -68,23 +70,31 @@
 			events = events.replace(/volume\b/, 'volumechange');
 			events = events.replace(/(time\b|position)/, 'timeupdate');
 			this.$video[action](events, fn);
+			return this;
 		},
 		on: function(events, fn) {
-			this.handle('on', events, fn);
+			return this.handle('on', events, fn);
 		},
 		off: function(events, fn) {
-			this.handle('off', events, fn);
+			return this.handle('off', events, fn);
 		},
 
+		load: function(src) {
+			this.video.src = src;
+			this.video.load();
+			return this;
+		},
 		play: function(playing) {
 			if (playing) {
 				this.video.pause();
 			} else {
 				this.video.play();
 			}
+			return this;
 		},
 		pause: function() {
 			this.video.pause();
+			return this;
 		},
 		mute: function(muted) {
 			if (muted) {
@@ -92,10 +102,12 @@
 			} else {
 				this.video.muted = true;
 			}
+			return this;
 		},
 		volume: function(val) {
 			this.video.muted = false;
 			if (val) this.video.volume = val;
+			return this;
 		},
 		fullscreen: function(fullscreen) {
 			if (fullscreen) {
@@ -105,10 +117,12 @@
 				var requestFullScreen = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen;
 				requestFullScreen.call(el);
 			}
+			return this;
 		},
 		normalscreen: function() {
 			var cancelFullScreen = document.cancelFullScreen || document.webkitCancelFullScreen || document.mozCancelFullScreen;
 			cancelFullScreen.call(document);
+			return this;
 		},
 		isFullscreen: function() {
 			return !!(document.fullscreenElement || document.webkitIsFullScreen || document.mozFullScreenElement);
