@@ -1,8 +1,6 @@
 (function(C, document) {
 
-	C.Slider = function(api, config, options) {
-		this.api = api;
-
+	C.Slider = function(options) {
 		var _this = this;
 		var down = false;
 

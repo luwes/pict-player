@@ -1,21 +1,45 @@
 (function(C) {
 
-	C.Controls = function(api, config) {
+	var defaults = {
+		template:
+			'<div class="pict-controls">' +
+				'<div class="pict-left">' +
+					'<a class="pict-play"></a>' +
+				'</div>' +
+				'<div class="pict-right">' +
+					'<span class="pict-time">00:00</span>' +
+					'<a class="pict-mute"></a>' +
+					'<a class="pict-fullscreen"></a>' +
+				'</div>' +
+				'<div class="pict-center">' +
+					'<div class="pict-bar">' +
+						'<div class="pict-progress"></div>' +
+						'<div class="pict-position"></div>' +
+					'</div>' +
+				'</div>' +
+			'</div>',
+		delay: 1000
+	};
+
+	C.Controls = function(api) {
 		this.api = api;
 		this.id = 0;
+		this.config = C.$.extend(defaults, api.config.controls);
 
-		this.el = C.$.parseHTML(config.template)[0];
+		this.el = C.$.parseHTML(this.config.template)[0];
 		this.$el = C.$(this.el);
 		api.inner.appendChild(this.el);
 
-		this.progressBar = new C.Slider(api, config, {
+		this.progressBar = new C.Slider({
 			el: '.pict-progress'
 		});
-		this.positionBar = new C.Slider(api, config, {
+		this.positionBar = new C.Slider({
 			el: '.pict-position',
 			handle: true,
 			change: C.$.proxy(this.change, this)
 		});
+
+		C.$(api.el).on('mousemove', C.$.proxy(this.show, this));
 
 		this.$el.on('click', C.$.proxy(this.click, this));
 		this.$el.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', C.$.proxy(this.display, this));
@@ -31,7 +55,7 @@
 			this.$el.css({ visibility: 'visible', opacity: 1 });
 			clearTimeout(this.id);
 			if (!this.api.video.paused) {
-				this.id = setTimeout(C.$.proxy(this.hide, this), 1000);
+				this.id = setTimeout(C.$.proxy(this.hide, this), this.config.delay);
 			}
 		},
 

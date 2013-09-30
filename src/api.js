@@ -18,24 +18,7 @@
 		setup: function(options) {
 
 			var defaults = {
-				controls: false,
-				template:
-					'<div class="pict-controls">' +
-						'<div class="pict-left">' +
-							'<a class="pict-play"></a>' +
-						'</div>' +
-						'<div class="pict-right">' +
-							'<span class="pict-time">00:00</span>' +
-							'<a class="pict-mute"></a>' +
-							'<a class="pict-fullscreen"></a>' +
-						'</div>' +
-						'<div class="pict-center">' +
-							'<div class="pict-bar">' +
-								'<div class="pict-progress"></div>' +
-								'<div class="pict-position"></div>' +
-							'</div>' +
-						'</div>' +
-					'</div>'
+				controls: false
 			};
 
 			this.config = C.$.extend(defaults, options);
@@ -57,9 +40,7 @@
 			});
 			this.$video.removeAttr('width height');
 
-			this.controls = new C.Controls(this, this.config);
-			C.$(this.el).on('mousemove', C.$.proxy(this.controls.show, this.controls));
-			
+			this.controls = new C.Controls(this);
 			return this;
 		},
 

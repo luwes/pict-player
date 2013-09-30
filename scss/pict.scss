@@ -127,13 +127,14 @@
 					margin: 0;
 				}
 				> a {
+					$handle-width: 5px;
 					$handle-height: 10px;
 
-					background-color: #090;
+					background-color: #fff;
 					padding: 0;
 					top: 50%;
 					left: 0;
-					width: $handle-height;
+					width: $handle-width;
 					height: $handle-height;
 					margin-top: -$handle-height/2;
 					&:hover, &:active {

@@ -132,11 +132,11 @@ you can use the generic selector below, but it's slower:
         width: 100%;
         margin: 0; }
       .pict-controls .pict-bar > div.pict-position > a {
-        background-color: #090;
+        background-color: #fff;
         padding: 0;
         top: 50%;
         left: 0;
-        width: 10px;
+        width: 5px;
         height: 10px;
         margin-top: -5px; }
         .pict-controls .pict-bar > div.pict-position > a:hover, .pict-controls .pict-bar > div.pict-position > a:active {
