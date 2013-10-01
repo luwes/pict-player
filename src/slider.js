@@ -16,7 +16,7 @@
 			down = e.type === 'mousedown';
 			onMove(e);
 		};
-		p.onmousedown = onMouse;
+		C.$(p).on('mousedown', onMouse);
 		C.$(document).on('mouseup', onMouse);
 
 		var onMove = function(e) {

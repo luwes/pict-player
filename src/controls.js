@@ -39,38 +39,50 @@
 			change: C.$.proxy(this.change, this)
 		});
 
-		C.$(api.el).on('mousemove', C.$.proxy(this.show, this));
+		this.listenTo(C.$(api.el), 'mousemove', C.$.throttle(this.delayedHide, 1000));
 
-		this.$el.on('click', C.$.proxy(this.click, this));
-		this.$el.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', C.$.proxy(this.display, this));
+		this.listenTo(this.$el, 'click', this.click);
+		this.listenTo(this.$el, 'transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', this.hideEnd);
 
-		api.on('play pause volume fullscreen', C.$.proxy(this.render, this));
-		api.on('loadedmetadata timeupdate', C.$.proxy(this.position, this));
-		api.on('progress', C.$.proxy(this.progress, this));
+		this.listenTo(api, 'play pause volume fullscreen', this.render);
+		this.listenTo(api, 'loadedmetadata timeupdate', this.position);
+		this.listenTo(api, 'progress', this.progress);
 	};
 
 	C.Controls.prototype = {
 
-		show: function() {
-			this.$el.css({ visibility: 'visible', opacity: 1 });
-			clearTimeout(this.id);
+		listenTo: function(obj, event, fn) {
+			obj.on(event, C.$.proxy(fn, this));
+		},
+
+		delayedHide: function() {
+			this.show();
 			if (!this.api.video.paused) {
 				this.id = setTimeout(C.$.proxy(this.hide, this), this.config.delay);
 			}
 		},
 
-		hide: function() {
-			this.$el.css({ opacity: 0 });
+		show: function() {
+			clearTimeout(this.id);
+			if (this.$el.css('opacity') == 0) {
+				this.$el.css({ visibility: 'visible', opacity: 1 });
+			}
 		},
 
-		display: function() {
+		hide: function() {
+			if (this.$el.css('opacity') == 1) {
+				this.$el.css({ opacity: 0 });
+			}
+		},
+		
+		hideEnd: function() {
 			if (this.$el.css('opacity') == 0) {
 				this.$el.css({ visibility: 'hidden' });
 			}
 		},
 
 		click: function(e) {
-			e.preventDefault();
+			if (e.preventDefault) e.preventDefault();
 			if (e.target.nodeName == "A") {
 				this.action(e);
 			}
