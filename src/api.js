@@ -41,6 +41,9 @@
 			this.$video.removeAttr('width height');
 
 			this.controlbar = new C.Controlbar(this, this.config.controlbar);
+
+			this.on('click', C.$.proxy(this.toggle, this));
+
 			return this;
 		},
 
@@ -64,6 +67,9 @@
 			this.video.src = src;
 			this.video.load();
 			return this;
+		},
+		toggle: function() {
+			return this.play(!this.video.paused);
 		},
 		play: function(playing) {
 			if (playing) {
