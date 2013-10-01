@@ -1,7 +1,19 @@
+@mixin prefixed($property, $value) {
+	@each $prefix in "-webkit-", "-moz-", "-ms-", "-o-", "" {
+		#{$prefix}#{$property}: #{$value};
+	}
+}
+
 @mixin transition($props) {
-    -webkit-transition: $props;
-    -moz-transition: $props;
-    -ms-transition: $props;
-    -o-transition: $props;
-    transition: $props;
+    @include prefixed('transition', $props);
+}
+
+@mixin border-radius($value: 3px) {
+	@include prefixed('border-radius', $value);
+	// keeps background from busting out of border 
+	@include prefixed('background-clip', padding-box);
+}
+
+@mixin box-shadow($props) {
+	@include prefixed('box-shadow', $props);
 }

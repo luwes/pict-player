@@ -132,6 +132,21 @@ you can use the generic selector below, but it's slower:
         width: 100%;
         margin: 0; }
       .pict-controls .pict-bar > div.pict-position > a {
+        -webkit-border-radius: 1px;
+        -moz-border-radius: 1px;
+        -ms-border-radius: 1px;
+        -o-border-radius: 1px;
+        border-radius: 1px;
+        -webkit-background-clip: padding-box;
+        -moz-background-clip: padding-box;
+        -ms-background-clip: padding-box;
+        -o-background-clip: padding-box;
+        background-clip: padding-box;
+        -webkit-box-shadow: 0 0 2px 0 black;
+        -moz-box-shadow: 0 0 2px 0 black;
+        -ms-box-shadow: 0 0 2px 0 black;
+        -o-box-shadow: 0 0 2px 0 black;
+        box-shadow: 0 0 2px 0 black;
         background-color: #fff;
         padding: 0;
         top: 50%;
@@ -139,5 +154,3 @@ you can use the generic selector below, but it's slower:
         width: 5px;
         height: 10px;
         margin-top: -5px; }
-        .pict-controls .pict-bar > div.pict-position > a:hover, .pict-controls .pict-bar > div.pict-position > a:active {
-          -webkit-transform: scale(1.2); }

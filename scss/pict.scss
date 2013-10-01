@@ -130,6 +130,9 @@
 					$handle-width: 5px;
 					$handle-height: 10px;
 
+					@include border-radius(1px);
+					@include box-shadow(0 0 2px 0 #000);
+
 					background-color: #fff;
 					padding: 0;
 					top: 50%;
@@ -138,7 +141,7 @@
 					height: $handle-height;
 					margin-top: -$handle-height/2;
 					&:hover, &:active {
-						-webkit-transform: scale(1.2);
+
 					}
 				}
 			}
