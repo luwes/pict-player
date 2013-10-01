@@ -29,7 +29,7 @@
 				return false;
 			}
 		};
-		C.$(document).on('mousemove', onMove);
+		C.$(document).on('mousemove', C.$.throttle(onMove, 33));
 
 		this.a = document.createElement('a');
 		if (options.handle) {
