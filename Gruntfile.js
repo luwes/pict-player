@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 				files: {
 					'pict.min.js': [
 						'src/api.js',
-						'src/controls.js',
+						'src/controlbar.js',
 						'src/slider.js',
 						'src/util.js'
 					]

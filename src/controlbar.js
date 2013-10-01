@@ -21,10 +21,10 @@
 		delay: 1000
 	};
 
-	C.Controls = function(api) {
+	C.Controlbar = function(api, options) {
 		this.api = api;
 		this.id = 0;
-		this.config = C.$.extend(defaults, api.config.controls);
+		this.config = C.$.extend(defaults, options);
 
 		this.el = C.$.parseHTML(this.config.template)[0];
 		this.$el = C.$(this.el);
@@ -49,7 +49,7 @@
 		this.listenTo(api, 'progress', this.progress);
 	};
 
-	C.Controls.prototype = {
+	C.Controlbar.prototype = {
 
 		listenTo: function(obj, event, fn) {
 			obj.on(event, C.$.proxy(fn, this));
@@ -74,7 +74,7 @@
 				this.$el.css({ opacity: 0 });
 			}
 		},
-		
+
 		hideEnd: function() {
 			if (this.$el.css('opacity') == 0) {
 				this.$el.css({ visibility: 'hidden' });
