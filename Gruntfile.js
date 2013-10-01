@@ -13,6 +13,7 @@ module.exports = function(grunt) {
 						'src/api.js',
 						'src/controlbar.js',
 						'src/slider.js',
+						'src/signal.js',
 						'src/util.js'
 					]
 				}

@@ -16,10 +16,16 @@
 	</video>
 
 	<script>
-		var player = pict('player').setup({
-			//controls: true
-		});
+		var player = pict('player').setup({});
 		console.log(player);
+
+		player.controlbar.on('hide', function() {
+			console.log('hide');
+		});
+
+		player.controlbar.on('show', function() {
+			console.log('show')
+		});
 	</script>
 
 </body>

@@ -44,7 +44,7 @@
 
 		css: function(styles) {
 			return typeof styles === 'string' ?
-				this[0].style[styles] :
+				this[0].style[styles] || window.getComputedStyle(this[0])[styles] :
 				this.each(function(el) {
 					for (var key in styles) {
 						var value = styles[key];

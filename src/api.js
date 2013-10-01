@@ -40,7 +40,7 @@
 			});
 			this.$video.removeAttr('width height');
 
-			this.controlbar = new C.Controlbar(this);
+			this.controlbar = new C.Controlbar(this, this.config.controlbar);
 			return this;
 		},
 

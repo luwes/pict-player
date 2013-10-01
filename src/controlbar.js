@@ -39,7 +39,7 @@
 			change: C.$.proxy(this.change, this)
 		});
 
-		this.listenTo(C.$(api.el), 'mousemove', C.$.throttle(this.delayedHide, 1000));
+		this.listenTo(C.$(api.el), 'mousemove', C.$.throttle(this.delayedHide, this.config.delay-10));
 
 		this.listenTo(this.$el, 'click', this.click);
 		this.listenTo(this.$el, 'transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', this.hideEnd);
@@ -47,12 +47,25 @@
 		this.listenTo(api, 'play pause volume fullscreen', this.render);
 		this.listenTo(api, 'loadedmetadata timeupdate', this.position);
 		this.listenTo(api, 'progress', this.progress);
+
+		this.events = {
+			show: new C.Signal(),
+			hide: new C.Signal()
+		};
 	};
 
 	C.Controlbar.prototype = {
 
 		listenTo: function(obj, event, fn) {
 			obj.on(event, C.$.proxy(fn, this));
+		},
+
+		on: function(event, fn) {
+			this.events[event].on(fn);
+		},
+
+		off: function(event, fn) {
+			this.events[event].off(fn);
 		},
 
 		delayedHide: function() {
@@ -66,12 +79,14 @@
 			clearTimeout(this.id);
 			if (this.$el.css('opacity') == 0) {
 				this.$el.css({ visibility: 'visible', opacity: 1 });
+				this.events.show.trigger();
 			}
 		},
 
 		hide: function() {
 			if (this.$el.css('opacity') == 1) {
 				this.$el.css({ opacity: 0 });
+				this.events.hide.trigger();
 			}
 		},
 
@@ -104,7 +119,7 @@
 		render: function() {
 			var v = this.api.video;
 
-			this.show();
+			this.delayedHide();
 
 			C.$('.pict-play').attr('data-state', !v.paused);
 			C.$('.pict-mute').attr('data-state', v.muted);
