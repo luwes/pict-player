@@ -1,6 +1,5 @@
 /*global module:false*/
 module.exports = function(grunt) {
-
 	// Project configuration.
 	grunt.initConfig({
 		// Metadata.
@@ -8,6 +7,11 @@ module.exports = function(grunt) {
 		// Task configuration.
 		uglify: {
 			all: {
+				options: {
+					enclose: {
+						'window,document': 'window,document'
+					}
+				},
 				files: {
 					'pict.min.js': [
 						'src/api.js',
@@ -29,17 +33,11 @@ module.exports = function(grunt) {
 		watch: {
 			css: {
 				files: 'scss/*.scss',
-				tasks: ['sass'],
-				options: {
-					livereload: true
-				}
+				tasks: ['sass']
 			},
 			js: {
 				files: 'src/*.js',
-				tasks: ['uglify'],
-				options: {
-					livereload: true
-				}
+				tasks: ['uglify']
 			}
 		}
 	});
