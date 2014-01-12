@@ -12,6 +12,9 @@ pict.fn = pict.prototype = {
 		this.id = id;
 		this.$video = $('#'+id);
 		this.video = this.$video[0];
+		this.fullscreenEnabled = document.fullscreenEnabled ||
+								document.webkitFullscreenEnabled ||
+								document.mozFullScreenEnabled;
 	},
 
 	setup: function(options) {

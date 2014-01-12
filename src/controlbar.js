@@ -62,10 +62,12 @@ Controlbar.prototype = {
 
 	on: function(event, fn) {
 		this.events[event].on(fn);
+		return this;
 	},
 
 	off: function(event, fn) {
 		this.events[event].off(fn);
+		return this;
 	},
 
 	delayedHide: function() {
@@ -81,6 +83,7 @@ Controlbar.prototype = {
 			this.$el.css({ visibility: 'visible', opacity: 1 });
 			this.events.show.trigger();
 		}
+		return this;
 	},
 
 	hide: function() {
@@ -88,6 +91,7 @@ Controlbar.prototype = {
 			this.$el.css({ opacity: 0 });
 			this.events.hide.trigger();
 		}
+		return this;
 	},
 
 	hideEnd: function() {
@@ -117,13 +121,15 @@ Controlbar.prototype = {
 	},
 
 	render: function() {
-		var v = this.api.video;
 
 		this.delayedHide();
 
-		$('.pict-play').attr('data-state', !v.paused);
-		$('.pict-mute').attr('data-state', v.muted);
-		$('.pict-fullscreen').attr('data-state', this.api.isFullscreen());
+		$('.pict-play').attr('data-state', !this.api.video.paused);
+		$('.pict-mute').attr('data-state', this.api.video.muted);
+
+		if (this.api.fullscreenEnabled) {
+			$('.pict-fullscreen').attr('data-state', this.api.isFullscreen());
+		}
 	},
 
 	position: function() {
