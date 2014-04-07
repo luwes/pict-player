@@ -37,8 +37,8 @@ pict.fn = pict.prototype = {
 		this.el.appendChild(this.inner);
 
 		$(this.el).css({
-			width: this.$video.attr('width') || this.$video.width(),
-			height: this.$video.attr('height') || this.$video.height()
+			width: this.$video.attr('width'),
+			height: this.$video.attr('height')
 		});
 		this.$video.removeAttr('width height');
 
